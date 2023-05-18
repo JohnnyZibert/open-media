@@ -1,0 +1,34 @@
+.form{
+    height: 96px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+}
+.inputBlock {
+    display: flex;
+}
+.inputForm{
+    padding: 32px 16px;
+    color: #1B191C;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    min-width: 524px;
+    border: none;
+    outline: none;
+}
+.toPlayerBtn{
+    border: none;
+    background: none;
+}
+
+.errorMessage{
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #C6A827;
+}
+
