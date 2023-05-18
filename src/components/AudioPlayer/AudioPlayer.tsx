@@ -43,12 +43,14 @@ export const Player = (props: IProps) => {
     currentTime: 0,
     duration: 0,
     currentPercentage: 0,
-    volumeMusic: audioRef.current?.volume,
+    volumeMusic: audioRef?.current?.volume,
   });
   const [valueVolume, setValueVolume] = useState<IVolume>({
     currentVolume: 0,
     currentPercentage: 0,
   });
+
+  console.log(audioRef?.current?.volume);
 
   useEffect(() => {
     if (checkAudioRef) {

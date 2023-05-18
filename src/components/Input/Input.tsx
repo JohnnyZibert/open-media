@@ -1,11 +1,12 @@
 import React, { CSSProperties } from "react";
-import cls from "./Input.module.css";
 import {
   Controller,
   RefCallBack,
   RegisterOptions,
   useFormContext,
 } from "react-hook-form";
+import errorIcon from "../../assets/img/24.svg";
+import cls from "./Input.module.css";
 
 interface InputProps {
   name?: string;
@@ -20,6 +21,7 @@ interface InputProps {
   onClick?: () => void;
   ref?: RefCallBack;
   errorMessage?: string;
+  errorIconStyle?: string;
 }
 
 const Input = (props: InputProps) => {
@@ -30,6 +32,7 @@ const Input = (props: InputProps) => {
     className,
     label,
     rules,
+    errorIconStyle,
     errorMessage,
     ...otherProps
   } = props;
@@ -41,13 +44,18 @@ const Input = (props: InputProps) => {
       rules={rules}
       defaultValue={""}
       render={({ field }) => (
-        <input
-          {...field}
-          className={className}
-          placeholder={placeholder}
-          autoComplete="off"
-          {...otherProps}
-        />
+        <div className={cls.wrapperInput}>
+          <input
+            {...field}
+            className={className}
+            placeholder={placeholder}
+            autoComplete="off"
+            {...otherProps}
+          />
+          {errorMessage && (
+            <img src={errorIcon} className={errorIconStyle} alt="error" />
+          )}
+        </div>
       )}
     />
   );

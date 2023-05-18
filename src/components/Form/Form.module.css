@@ -1,13 +1,15 @@
-.form{
+.form {
     height: 96px;
     background: #FFFFFF;
     display: flex;
     flex-direction: row;
 }
+
 .inputBlock {
     display: flex;
 }
-.inputForm{
+
+.inputForm {
     padding: 32px 16px;
     color: #1B191C;
     font-family: 'Space Grotesk', sans-serif;
@@ -17,13 +19,22 @@
     min-width: 524px;
     border: none;
     outline: none;
+    position: relative;
 }
-.toPlayerBtn{
+
+.toPlayerBtn {
     border: none;
     background: none;
 }
 
-.errorMessage{
+.errorIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 18px;
+}
+
+.errorMessage {
     font-family: 'Space Grotesk', sans-serif;
     font-style: normal;
     font-weight: 300;

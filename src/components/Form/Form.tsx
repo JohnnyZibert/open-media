@@ -1,10 +1,10 @@
 import React, { memo } from "react";
-import cls from "./Form.module.css";
 import Input from "../Input/Input";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import buttonGo from "../../assets/img/button.svg";
 import { string, object } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import cls from "./Form.module.css";
 
 export interface FormProps {
   className?: string;
@@ -55,6 +55,7 @@ export const Form = memo((props: FormProps) => {
             className={cls.inputForm}
             placeholder="https://"
             errorMessage={errors.audioLink?.message}
+            errorIconStyle={cls.errorIcon}
           />
           <button className={cls.toPlayerBtn} type="submit">
             <img src={buttonGo} alt="send-audio" />

@@ -10,6 +10,7 @@ export const PlayerAndFormBlock = memo((props: PlayerAndFormBlockProps) => {
   const [currentSong, setCurrentSong] = useState<string>("");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [toPlayerAndBack, setToPlayerAndBack] = useState(0);
+
   return (
     <div>
       {toPlayerAndBack !== 0 ? (
