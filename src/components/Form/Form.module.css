@@ -25,6 +25,7 @@
 .toPlayerBtn {
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .errorIcon {

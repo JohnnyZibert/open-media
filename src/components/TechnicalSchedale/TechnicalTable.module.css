@@ -1,0 +1,38 @@
+.technicalSection {
+    max-height: 387px;
+    background: #1B191C;
+    padding: 40px;
+}
+
+.title {
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #F5F6F7;
+}
+
+.toggleTable {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 47px;
+}
+
+.unSelectTable {
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #CFD3D6;
+}
+
+.activeTable {
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #F5F6F7;
+    border-bottom: 1px solid #EEEEEE;
+}

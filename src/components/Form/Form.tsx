@@ -5,12 +5,12 @@ import buttonGo from "../../assets/img/button.svg";
 import { string, object } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import cls from "./Form.module.css";
+import { Button } from "../Button/Button";
 
 export interface FormProps {
   className?: string;
   setCurrentSong?: (data: string) => void;
-  toPlayerAndBack: number;
-  setToPlayerAndBack: (value: number) => void;
+  setToPlayerAndBack: (value: boolean) => void;
 }
 
 export interface FormData {
@@ -33,7 +33,7 @@ const urlSchema = object({
 });
 
 export const Form = memo((props: FormProps) => {
-  const { setCurrentSong, setToPlayerAndBack, toPlayerAndBack } = props;
+  const { setCurrentSong, setToPlayerAndBack } = props;
   const methods = useForm<FormData>({
     resolver: yupResolver(urlSchema),
     mode: "onChange",
@@ -43,7 +43,7 @@ export const Form = memo((props: FormProps) => {
   const onSubmit = (data: FormData) => {
     if (isValidUrl(data.audioLink)) {
       setCurrentSong?.(data.audioLink);
-      setToPlayerAndBack(toPlayerAndBack + 1);
+      setToPlayerAndBack(true);
     }
   };
   return (
@@ -57,9 +57,9 @@ export const Form = memo((props: FormProps) => {
             errorMessage={errors.audioLink?.message}
             errorIconStyle={cls.errorIcon}
           />
-          <button className={cls.toPlayerBtn} type="submit">
+          <Button className={cls.toPlayerBtn} type="submit">
             <img src={buttonGo} alt="send-audio" />
-          </button>
+          </Button>
         </form>
       </FormProvider>
       <span className={cls.errorMessage}>{errors.audioLink?.message}</span>

@@ -14,11 +14,11 @@ export interface InputRangeProps {
   id?: string;
   step?: number;
   ref?: RefObject<HTMLInputElement>;
+  type?: string;
 }
 
 export const InputRange = memo((props: InputRangeProps) => {
   const {
-    className,
     id,
     currentValue,
     maxDuration,
@@ -29,12 +29,14 @@ export const InputRange = memo((props: InputRangeProps) => {
     style,
     step,
     ref,
+    type,
     onChange,
   } = props;
+
   return (
     <div className={styleForTrack}>
       <input
-        type="range"
+        type={type}
         className={styleForInput}
         min={0}
         max={maxDuration}

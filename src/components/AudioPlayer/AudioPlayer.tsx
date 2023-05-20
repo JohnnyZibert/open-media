@@ -2,75 +2,60 @@ import React, {
   ChangeEvent,
   Dispatch,
   RefObject,
+  useCallback,
   useEffect,
-  useLayoutEffect,
+  useRef,
   useState,
 } from "react";
 import playButton from "../../assets/img/Play.svg";
 import pauseButton from "../../assets/img/Pause.svg";
 import goBack from "../../assets/img/lable.svg";
 import { Button } from "../Button/Button";
-import { InputRange } from "../InputRange/InputRange";
 import cls from "./AudioPlayer.module.css";
+import { VolumeMusic } from "../VolumeMusic/VolumeMusic";
+import { AudioTrack } from "../AudioTrack/AudioTrack";
+import { Loader } from "../Loader/Loader";
+import { getTime } from "../../helpers/getTimeToSeconds";
 
 interface IProps {
-  isPlaying: boolean;
-  setIsPlaying: Dispatch<boolean>;
-  audioRef: RefObject<HTMLAudioElement>;
   currentSong?: string;
-  setToPlayerAndBack?: (value: number) => void;
-  toPlayerAndBack: number;
+  setToPlayerAndBack?: (value: boolean) => void;
 }
 
-interface IVolume {
-  currentVolume: number;
+export interface SongInfo {
+  currentTime: number;
+  duration: number;
   currentPercentage: number;
 }
 
 export const Player = (props: IProps) => {
-  const {
-    isPlaying,
-    setIsPlaying,
-    audioRef,
-    currentSong,
-    setToPlayerAndBack,
-    toPlayerAndBack,
-  } = props;
-
-  const checkAudioRef = audioRef.current !== null;
-
-  const [songInfo, setSongInfo] = useState({
+  const { currentSong, setToPlayerAndBack } = props;
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [volume, setVolume] = useState<number | null>(null);
+  const [rangeVolume, setRangeVolume] = useState<number | null>(null);
+  const [songInfo, setSongInfo] = useState<SongInfo>({
     currentTime: 0,
     duration: 0,
     currentPercentage: 0,
-    volumeMusic: audioRef?.current?.volume,
-  });
-  const [valueVolume, setValueVolume] = useState<IVolume>({
-    currentVolume: 0,
-    currentPercentage: 0,
   });
 
-  console.log(audioRef?.current?.volume);
+  const checkAudioRef = audioRef.current !== null;
 
   useEffect(() => {
     if (checkAudioRef) {
-      const duration = 1.0;
-      const animationPercentage =
-        Number(audioRef.current?.volume * 0.5) / duration;
-      setValueVolume({
-        ...valueVolume,
-        currentVolume: audioRef.current?.volume * 0.5,
-        currentPercentage: animationPercentage,
-      });
+      audioRef.current.volume = 0.5;
+      setVolume(audioRef.current.volume);
+      setRangeVolume(audioRef.current.volume);
     }
   }, [checkAudioRef]);
 
   const audioClick = () => {
     if (isPlaying) {
-      checkAudioRef && audioRef.current.pause();
+      audioRef.current?.pause();
       setIsPlaying(!isPlaying);
     } else {
-      checkAudioRef && audioRef.current.play();
+      audioRef.current?.play();
       setIsPlaying(!isPlaying);
     }
   };
@@ -82,6 +67,7 @@ export const Player = (props: IProps) => {
     const animationPercentage = Math.round(
       (roundedCurrent / roundedDuration) * 100
     );
+
     setSongInfo({
       ...songInfo,
       currentTime: current,
@@ -90,10 +76,9 @@ export const Player = (props: IProps) => {
     });
   };
 
-  const getTime = (time: number) => {
-    return time
-      ? Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
-      : "0:00";
+  const onClickBack = () => {
+    setToPlayerAndBack?.(false);
+    setIsPlaying(false);
   };
 
   const dragHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -102,57 +87,43 @@ export const Player = (props: IProps) => {
     }
 
     setSongInfo({ ...songInfo, currentTime: Number(e.target.value) });
+    audioRef.current?.play();
+    setIsPlaying(true);
   };
 
-  const volumeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (checkAudioRef && currentSong) {
-      const current = e.target.value;
-      const duration = 1.0;
-      const animationPercentage = Number(current) / duration;
+  const volumeHandler = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (checkAudioRef && currentSong) {
+        const current = Number(e.target.value || 0);
+        const duration = 1.0;
+        const animationPercentage = current / duration;
 
-      setValueVolume({
-        ...valueVolume,
-        currentVolume: Number(current),
-        currentPercentage: animationPercentage,
-      });
+        setVolume(current);
+        setRangeVolume(animationPercentage);
+        audioRef.current.volume = current;
+      }
+    },
+    [audioRef, checkAudioRef, currentSong]
+  );
 
-      audioRef.current.volume = Number(current);
-    }
-  };
-  const animationTrack = {
-    transform: `translateX(${songInfo.currentPercentage}%)`,
-  };
-  const animationVolume = {
-    transform: `translateX(${valueVolume.currentPercentage * 100}%)`,
-  };
   return (
     <>
-      <Button
-        className={cls.back}
-        onClick={() => setToPlayerAndBack?.(toPlayerAndBack - 1)}
-      >
-        <img src={goBack} alt="play-button" />
+      <Button className={cls.back} onClick={onClickBack}>
+        <img src={goBack} alt="go-back" />
       </Button>
       <div className={cls.containerPlayer}>
+        {!checkAudioRef && <Loader />}
         {isPlaying ? (
           <Button onClick={audioClick}>
-            <img src={pauseButton} alt="play-button" />
+            <img src={pauseButton} alt="pause" />
           </Button>
         ) : (
           <Button onClick={audioClick} disable={!checkAudioRef}>
-            <img src={playButton} alt="play-button" />
+            <img src={playButton} alt="play" />
           </Button>
         )}
         <div className="time-control">
-          <InputRange
-            styleForTrack={cls.track}
-            currentValue={songInfo.currentTime}
-            maxDuration={songInfo.duration}
-            onChange={dragHandler}
-            animationTrack={animationTrack}
-            styleProgressBar={cls.progress}
-            styleForInput={cls.input}
-          />
+          <AudioTrack songInfo={songInfo} dragHandler={dragHandler} />
         </div>
         <div className={cls.playerFooter}>
           <p className={cls.timeMusic}>
@@ -160,16 +131,10 @@ export const Player = (props: IProps) => {
               songInfo.currentTime ? songInfo.currentTime : Number("0:00")
             )}
           </p>
-          <InputRange
-            styleForTrack={cls.trackVolume}
-            currentValue={valueVolume.currentVolume}
-            maxDuration={1}
-            step={0.1}
-            animationTrack={animationVolume}
-            styleProgressBar={cls.progressVolume}
-            styleForInput={cls.input}
-            id={"volume"}
-            onChange={volumeHandler}
+          <VolumeMusic
+            volume={volume || 0.5}
+            rangeVolume={rangeVolume || 0.5}
+            volumeHandler={volumeHandler}
           />
         </div>
         <audio
