@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+    gap: 46px;
+}
+
+.wrapper{
+    max-width: 645px;
+}

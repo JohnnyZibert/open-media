@@ -1,0 +1,28 @@
+.table {
+    display: grid;
+    grid-template-columns:  1fr 2fr; ;
+    grid-template-rows: repeat(auto-fit, 56px) ;
+    max-height: 300px;
+    min-width: 645px;
+    width: 100%;
+}
+
+.nameParam{
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    color: #EEEEEE;
+    border-bottom: 1px solid rgba(207, 211, 214, 0.1);
+    padding-right: 41px;
+}
+.value {
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    color: #EEEEEE;
+    border-bottom: 1px solid rgba(207, 211, 214, 0.1);
+}
