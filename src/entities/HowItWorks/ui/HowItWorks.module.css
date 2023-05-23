@@ -42,15 +42,24 @@
     max-height: 248px;
 }
 
-@media (max-width: 1485px) {
+@media (max-width: 954px) {
+    .schemaLine {
+        max-width: 280px;
+    }
+
+}
+
+@media (max-width: 800px) {
     .description {
         display: block;
     }
-}
 
-@media (max-width: 700px) {
-    .schemaLine {
-        max-width: 302px;
+    .descriptionContent {
+        margin-bottom: 36px;
+    }
+
+    .descriptionSchema {
+        margin-bottom: 120px;
     }
 }
 
@@ -93,11 +102,4 @@
         font-size: 36px;
     }
 
-    .descriptionContent {
-        margin-bottom: 36px;
-    }
-
-    .descriptionSchema {
-        margin-bottom: 120px;
-    }
 }
