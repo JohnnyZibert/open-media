@@ -6,3 +6,19 @@
 .wrapper{
     max-width: 645px;
 }
+
+.wrapperTableInfo2{
+    max-width: 645px;
+}
+
+@media (max-width: 1370px) {
+    .container{
+        display: block;
+    }
+}
+
+@media (max-width: 681px) {
+    .container{
+
+    }
+}

@@ -1,0 +1,71 @@
+.form {
+    height: 96px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+
+.linkTitle {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 20px;
+    color: #1B191C;
+    text-align: start;
+    width: 100%;
+}
+
+.inputBlock {
+    display: flex;
+}
+
+.inputForm {
+    padding: 32px 16px;
+    color: #1B191C;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    max-width: 524px;
+    width: 100%;
+    border: none;
+    outline: none;
+    position: relative;
+}
+
+.toPlayerBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.errorIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 18px;
+}
+
+.errorMessage {
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #C6A827;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    .form{
+        max-height: 64px;
+    }
+    .toPlayerBtn img {
+        max-height: 64px;
+    }
+    .inputForm {
+        max-height: 64px;
+    }
+}
+

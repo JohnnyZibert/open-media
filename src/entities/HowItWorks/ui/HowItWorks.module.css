@@ -1,0 +1,103 @@
+.description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.descriptionContent {
+    max-width: 672px;
+    margin-bottom: 120px;
+}
+
+.descriptionTitle {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 52px;
+    color: #F5F6F7;
+    margin-bottom: 40px;
+}
+
+.descriptionText {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    color: #EEEEEE;
+}
+
+.descriptionSchema {
+    display: flex;
+    align-items: center;
+}
+
+.schemaSquare {
+    max-width: 92px;
+    max-height: 92px;
+}
+
+.schemaLine {
+    max-width: 422px;
+}
+
+.schemaCloud {
+    max-width: 112px;
+    max-height: 248px;
+}
+
+@media (max-width: 1485px) {
+    .description {
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    .schemaLine {
+        max-width: 302px;
+    }
+}
+
+@media (max-width: 576px) {
+    .schemaLine {
+        max-width: 269px;
+    }
+
+    .schemaSquare {
+        max-width: 48px;
+        max-height: 48px;
+    }
+
+    .schemaCloud {
+        max-width: 59px;
+        max-height: 118px;
+    }
+}
+
+@media (max-width: 510px) {
+    .schemaLine {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 405px) {
+    .schemaLine {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 350px) {
+    .schemaLine {
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 568px) {
+    .descriptionTitle {
+        font-size: 36px;
+    }
+
+    .descriptionContent {
+        margin-bottom: 36px;
+    }
+
+    .descriptionSchema {
+        margin-bottom: 120px;
+    }
+}

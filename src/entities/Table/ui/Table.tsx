@@ -16,7 +16,7 @@ export const Table = memo((props: TableProps) => {
       <div className={cls.wrapper}>
         <TableInfo tableInfo={tableInfo} />
       </div>
-      <div>
+      <div className={cls.wrapperTableInfo2}>
         <TableInfo tableInfo={tableInfo2} />
       </div>
     </div>

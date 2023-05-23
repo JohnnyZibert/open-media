@@ -1,0 +1,10 @@
+.container{
+    background: #1B191C;
+    padding: 12px;
+}
+
+@media (max-width: 560px) {
+    .container{
+        padding: 0;
+    }
+}

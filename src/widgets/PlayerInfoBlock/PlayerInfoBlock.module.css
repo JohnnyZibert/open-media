@@ -1,0 +1,86 @@
+.head {
+    display: flex;
+    background: #EEEEEE;
+    justify-content: center;
+    padding: 40px 0;
+    width: 100%;
+}
+.wrapper{
+    max-width: 1336px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.textBlock {
+    max-width: 492px;
+}
+
+.title {
+    font-size: 48px;
+    line-height: 52px;
+    color: #000000;
+    margin-bottom: 24px;
+    font-weight: 400;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1B191C;
+    margin-bottom: 182px;
+
+}
+
+.agree {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #1B191C;
+}
+.playerMinWidth{
+    display: none;
+}
+
+.playerContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 811px;
+    padding: 0 93px;
+    width: 100%;
+}
+
+@media (max-width: 1121px) {
+    .head{
+        padding: 20px 12px;
+    }
+    .wrapper {
+        display: block;
+    }
+    .title{
+        margin-bottom: 40px;
+    }
+    .playerContainer {
+        display: none;
+    }
+    .playerMinWidth{
+        display: block;
+        max-width: 524px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 568px) {
+    .title{
+        font-size: 36px;
+    }
+    .subtitle {
+        margin-bottom: 12px;
+
+    }
+    .playerMinWidth{
+        max-width: 400px;
+        width: 100%;
+    }
+}

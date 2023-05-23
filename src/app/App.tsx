@@ -1,12 +1,10 @@
-import { PlayerAndFormBlock } from "../widgets/PalyerAndFormBlock/PlayerAndFormBlock";
-import { TechnicalTable } from "features/TechnicalSchedale/ui/TechnicalTable";
+import { HomePage } from "pages/HomePage";
 import "./styles/app.module.css";
 
 function App() {
   return (
     <div>
-      <PlayerAndFormBlock />
-      <TechnicalTable />
+      <HomePage />
     </div>
   );
 }

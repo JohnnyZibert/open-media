@@ -44,7 +44,7 @@ export const TechnicalTable = memo(() => {
       {active === 1 ? (
         <Table tableInfo={tableForAmazon1} tableInfo2={tableForAmazon2} />
       ) : (
-        <div>
+        <div className={cls.infoTable2}>
           <Table tableInfo={tableForOwn1} tableInfo2={tableForOwn2} />
         </div>
       )}
