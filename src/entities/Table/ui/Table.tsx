@@ -1,4 +1,3 @@
-import { memo } from "react";
 import cls from "./Table.module.css";
 import { TableInfo } from "../../../shared/ui/TableInfo/TableInfo";
 import { IInfo } from "../model/types/tableInfoTypes";
@@ -9,7 +8,7 @@ export interface TableProps {
   tableInfo2: IInfo[];
 }
 
-export const Table = memo((props: TableProps) => {
+export const Table = (props: TableProps) => {
   const { tableInfo, tableInfo2 } = props;
   return (
     <div className={cls.container}>
@@ -21,4 +20,4 @@ export const Table = memo((props: TableProps) => {
       </div>
     </div>
   );
-});
+};

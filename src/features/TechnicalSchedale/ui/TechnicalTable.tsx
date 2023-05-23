@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import cls from "./TechnicalTable.module.css";
 import { Button } from "../../../shared/ui/Button/Button";
 import { Table } from "entities/Table";
@@ -25,7 +25,7 @@ const tableForOwn2 = [
   { nameParam: "Graphics hardware", value: "GPU: NVidia only 2Gb+" },
 ];
 
-export const TechnicalTable = memo(() => {
+export const TechnicalTable = () => {
   const [active, setActive] = useState<number>(0);
   return (
     <section className={cls.technicalSection}>
@@ -50,4 +50,4 @@ export const TechnicalTable = memo(() => {
       )}
     </section>
   );
-});
+};

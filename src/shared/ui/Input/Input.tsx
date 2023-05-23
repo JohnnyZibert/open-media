@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, memo } from "react";
 import {
   Controller,
   RefCallBack,
@@ -24,7 +24,7 @@ interface InputProps {
   errorIconStyle?: string;
 }
 
-const Input = (props: InputProps) => {
+const Input = memo((props: InputProps) => {
   const control = useFormContext();
   const {
     name = "",
@@ -59,6 +59,6 @@ const Input = (props: InputProps) => {
       )}
     />
   );
-};
+});
 
 export default Input;

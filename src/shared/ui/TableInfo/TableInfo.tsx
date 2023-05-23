@@ -12,8 +12,8 @@ export const TableInfo = memo((props: TableInfoProps) => {
     <>
       {tableInfo.map((paramItem: IInfo, index) => (
         <div className={cls.table} key={index}>
-          <div className={cls.nameParam}>{paramItem.nameParam}</div>
-          <div className={cls.value}>{paramItem.value}</div>
+          <p className={cls.nameParam}>{paramItem.nameParam}</p>
+          <p className={cls.value}>{paramItem.value}</p>
         </div>
       ))}
     </>

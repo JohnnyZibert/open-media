@@ -1,12 +1,7 @@
-import { memo } from "react";
-import cls from "./PlayerInfoBlock.module.css";
 import { PlayerAndFormBlock } from "features/PalyerAndFormBlock/ui/PlayerAndFormBlock";
+import cls from "./PlayerInfoBlock.module.css";
 
-export interface PlayerInfoBlockProps {
-  className?: string;
-}
-
-export const PlayerInfoBlock = memo((props: PlayerInfoBlockProps) => {
+export const PlayerInfoBlock = () => {
   return (
     <section className={cls.head}>
       <div className={cls.wrapper}>
@@ -29,4 +24,4 @@ export const PlayerInfoBlock = memo((props: PlayerInfoBlockProps) => {
       </div>
     </section>
   );
-});
+};

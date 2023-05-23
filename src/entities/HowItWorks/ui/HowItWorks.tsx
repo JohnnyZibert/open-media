@@ -1,14 +1,9 @@
-import { memo } from "react";
 import cloud from "../../../shared/assets/img/cloud.svg";
 import line from "../../../shared/assets/img/line.svg";
 import square from "../../../shared/assets/img/square.svg";
 import cls from "./HowItWorks.module.css";
 
-export interface HowItWorksProps {
-  className?: string;
-}
-
-export const HowItWorks = memo((props: HowItWorksProps) => {
+export const HowItWorks = () => {
   return (
     <>
       <section className={cls.description}>
@@ -22,12 +17,12 @@ export const HowItWorks = memo((props: HowItWorksProps) => {
             samples.
           </p>
         </div>
-        <div className={cls.descriptionSchema}>
+        <aside className={cls.descriptionSchema}>
           <img src={square} alt="square" className={cls.schemaSquare} />
           <img src={line} alt="line" className={cls.schemaLine} />
           <img src={cloud} alt="cloud" className={cls.schemaCloud} />
-        </div>
+        </aside>
       </section>
     </>
   );
-});
+};

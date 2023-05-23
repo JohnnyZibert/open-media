@@ -1,4 +1,3 @@
-import { memo } from "react";
 import Input from "../../../shared/ui/Input/Input";
 import { FormProvider, useForm } from "react-hook-form";
 import nextBtn from "../../../shared/assets/img/nextBtn.svg";
@@ -21,7 +20,7 @@ const urlSchema = object({
   }),
 });
 
-export const Form = memo((props: FormProps) => {
+export const Form = (props: FormProps) => {
   const { setCurrentSong, setToPlayerAndBack } = props;
   const methods = useForm<FormData>({
     resolver: yupResolver(urlSchema),
@@ -58,4 +57,4 @@ export const Form = memo((props: FormProps) => {
       <span className={cls.errorMessage}>{errors.audioLink?.message}</span>
     </>
   );
-});
+};
